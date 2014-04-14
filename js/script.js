@@ -8,14 +8,19 @@ $(document).ready(function(){
 			{drag: function(){
 			
 			
-			//var windowWidth = $(document).width();
+			var windowWidth = $(document).width();
 			var xPos = $(this).offset().left;
             var yPos =  $(this).offset.top;
        
             $('.coordinates p').text(xPos);
             
             // CHECK TO SEE IF THE USER MOVES THE BAR TO THE LEFT OF THE SCREEN
-            //if( xPos < windowWidth)
+            if( xPos < windowWidth*.07){
+	            
+	            // IF THE USER MOVES THE BAR TO THE LEFT, CHANGE THE CSS
+	            console.log("Change the CSS sheet")
+	            $('#tunerArea').switchClass("tunerArea_vert");
+            }
             
             
             

@@ -16,11 +16,13 @@ body,html{
 }
 
 .tunerArea_hor{
-	position: relative;
 	width: 80%;
 	height: 44px;
-	top: 70%;
-	margin: auto;	
+}
+
+.tunerArea_vert{
+	width: 44px;
+	height: 80%;
 }
 
 .tunerBar{
@@ -33,6 +35,12 @@ body,html{
 	width: 100%;
 	margin-top: 5px;
 	height: 7px;
-	background-color:#ff0000;
-	
+	background-color:#ff0000;	
+}
+
+#tunerArea{
+	position:absolute;
+	top: 80%;
+	left: 10%;
+	border: 1px solid red;
 }
