@@ -42,7 +42,21 @@ $(document).ready(function(){
 		            
 		//SWITCH THE GRIPPER BAR
 		$('#gripper').removeClass("gripperArea_hor");
-		$('#gripper').addClass("gripperArea_vert");           
+		$('#gripper').addClass("gripperArea_vert");
+		
+		// MOVE THE TUNER UNDER THE MOUSE
+		$(document).mousedown(function(e){
+			$('#tunerArea').offset({top:e.pageY, left: e.pageX});
+		});
+		
+		// SNAP THE TUNER TO FINAL POSITION
+		$(document).mouseup(function(e){
+			$('#tunerArea').css({
+				"top": "10%",
+				"left": "2%"
+				});
+		});
+		           
 	}	
 
 // SNAP TUNER BAR TO RIGHT
@@ -62,38 +76,19 @@ $(document).ready(function(){
 		$('#gripper').removeClass("gripperArea_vert");
 		$('#gripper').addClass("gripperArea_hor");	
 		
+		// SNAP THE TUNER TO FINAL POSITION
+		$(document).mouseup(function(e){
+			$('#tunerArea').css({
+				"top": "80%",
+				"left": "10%"
+				});
+		});
 	}
-	
-// MOVE TUNER ON LEFT SNAP
-	function moveLeft(x,y){
-		console.log(x,y);	
-	}	
-	
-// MOVE TUNER ON LEFT SNAP
-	function moveCenter(x,y){
-		console.log(x,y);
-	}
-
-// GET XY LOCATION WHEN CLICKING THE GRIPPER
-	function gripperLocation(){
-	
-		$('div').mousedown(function(){
-		
-				$(this).mousemove(function(e){
-				$('p:first').text(e.pageX + " " + e.pageY );
-	
-				})
-
-		})
-	}
-		
-		
 
 
 			
 //RUN THESE FUNCTIONS ONCE THE PAGE LOADS
 	dragTuner();
-	gripperLocation();
 
 
 });
