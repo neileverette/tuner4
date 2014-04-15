@@ -7,40 +7,81 @@ $(document).ready(function(){
 			// SETS THE DRAG EVENT ON THE TUNER AREA ID OBJECT
 			{drag: function(){
 			
-			
 			var windowWidth = $(document).width();
 			var xPos = $(this).offset().left;
-            var yPos =  $(this).offset.top;
        
-            $('.coordinates p').text(xPos);
-            
-            // CHECK TO SEE IF THE USER MOVES THE BAR TO THE LEFT OF THE SCREEN
-            if( xPos < windowWidth*.07){
-	            
-	            // IF THE USER MOVES THE BAR TO THE LEFT, CHANGE THE CSS
-	            console.log("Change the CSS sheet")
-	            $('#tunerArea').switchClass("tunerArea_vert");
+            // SNAP TO LEFT TUNER BAR
+            if( xPos < windowWidth*.07){	
+				snapLeft();
             }
             
-            
-            
-            // CHECK TO SEE IF THE USER MOVES THE BAR TO THE RIGHT OF THE SCREEN
-            
-			}}
+            // SNAP TO MIDDLE TUNER BAR
+            if( xPos > windowWidth*.07){
+				snapCenter();
+				}         
+			}
+		});
+	}
+	
+// SNAP TUNER BAR TO LEFT
+	function snapLeft(){
+            	
+	//SWITCH THE TUNE AREA
+		$('#tunerArea').removeClass("tunerArea_hor");
+		$('#tunerArea').addClass("tunerArea_vert");
+		            
+		//SWITCH THE TUNER BAR
+		$('#tunerBar').removeClass("tunerBar_hor");
+		$('#tunerBar').addClass("tunerBar_vert");
+		            
+		//SWITCH THE GRADIENT BAR
+		$('#gradientBar').removeClass("tunerGradient_hor");
+		$('#gradientBar').addClass("tunerGradient_vert");
+		            
+		//SWITCH THE GRIPPER BAR
+		$('#gripper').removeClass("gripperArea_hor");
+		$('#gripper').addClass("gripperArea_vert");           
+	}	
+
+// SNAP TUNER BAR TO RIGHT
+	function snapCenter(){
+	//SWITCH THE TUNE AREA
+		$('#tunerArea').removeClass("tunerArea_vert");
+		$('#tunerArea').addClass("tunerArea_hor");
+		            
+		$('#tunerBar').removeClass("tunerBar_vert");
+		$('#tunerBar').addClass("tunerBar_hor");
+		            
+		//SWITCH THE GRADIENT BAR
+		$('#gradientBar').removeClass("tunerGradient_vert");
+		$('#gradientBar').addClass("tunerGradient_hor");
+		            
+		//SWITCH THE GRIPPER BAR
+		$('#gripper').removeClass("gripperArea_vert");
+		$('#gripper').addClass("gripperArea_hor");	
 		
-		);
+	}
+	
+// MOVE TUNER ON LEFT SNAP
+	function moveLeft(x,y){
+		console.log(x,y);	
+	}	
+	
+// MOVE TUNER ON LEFT SNAP
+	function moveCenter(x,y){
+		console.log(x,y);
 	}
 
-	function snapTuner(){
-	
-		var tunerXPos = $('#tunerArea').offset().left;
-		var windowWidth = $(document).width();
-		
-		console.log("The window is " + windowWidth + " pixels wide. The Tuner left margin is " + tunerXPos + (" pixels wide."));
-	}
+// GET XY LOCATION WHEN CLICKING THE GRIPPER
+	function gripperLocation(){
+		$('#gripper').onclick(function(event){})
+			console.log($(this).pageX);
+			}
 
-	
+
+			
+//RUN THESE FUNCTIONS ONCE THE PAGE LOADS
 	dragTuner();
-	snapTuner(); 
+
 
 });
