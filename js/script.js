@@ -1,11 +1,13 @@
 $(document).ready(function(){
+
 	
-	// MAKES THE TUNER BAR DRAGGABLE	
+// MAKES THE TUNER BAR DRAGGABLE	
 	function dragTuner(){
 		$('#tunerArea').draggable(
 			
 			// SETS THE DRAG EVENT ON THE TUNER AREA ID OBJECT
 			{drag: function(){
+			
 			
 			var windowWidth = $(document).width();
 			var xPos = $(this).offset().left;
@@ -74,14 +76,24 @@ $(document).ready(function(){
 
 // GET XY LOCATION WHEN CLICKING THE GRIPPER
 	function gripperLocation(){
-		$('#gripper').onclick(function(event){})
-			console.log($(this).pageX);
-			}
+	
+		$('div').mousedown(function(){
+		
+				$(this).mousemove(function(e){
+				$('p:first').text(e.pageX + " " + e.pageY );
+	
+				})
+
+		})
+	}
+		
+		
 
 
 			
 //RUN THESE FUNCTIONS ONCE THE PAGE LOADS
 	dragTuner();
+	gripperLocation();
 
 
 });
